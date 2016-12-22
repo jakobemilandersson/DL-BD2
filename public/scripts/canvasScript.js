@@ -147,6 +147,12 @@ function getPixelColor(res, e) {
 	}
 }
 
+function rgbToHex(r, g, b) {
+    if (r > 255 || g > 255 || b > 255)
+        throw "Invalid color component";
+    return ((r << 16) | (g << 8) | b).toString(16);
+}
+
 function findMove(res, e) {
 	if(res == 'down') {
 		document.getElementById("mySidenav").style.width = "0";
