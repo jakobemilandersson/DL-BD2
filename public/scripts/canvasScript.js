@@ -143,7 +143,8 @@ function getPixelColor(res, e) {
 		//var color = new Color([pixelData[0], pixelData[1], pixelData[2]]);
 		//Convert to HEX-decimal and return
 		alert("DONE");
-		return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
+		document.getElementById('size').innerHTML = hex;
+		//return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
 	}
 }
 
