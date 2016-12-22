@@ -23,7 +23,8 @@ var dBut = document.getElementById("downloadBut");
 window.addEventListener('load', function(e){
 	init_page()}, false);
 
-
+canvas.addEventListener('contextmenu', function(e){
+	getPixelColor('rightClick', e)}, false);
 canvas.addEventListener("mousedown", function(e){
 	findMove('down', e);}, false);
 canvas.addEventListener("mousemove", function(e){
@@ -126,6 +127,23 @@ function draw_ext(data, resolution){
 	ctx.stroke();
   }
 }
+
+function getPixelColor(res, e) {
+	if(res == 'rightClick') {
+		alert("PIXEL COLOR IS BEING CHECLED!");
+		e.preventDefault();
+		var cordX = e.clientX - rect.left;
+		var cordY = e.clientY - rect.top;
+		
+		var pixelData = ctx.getImageData(cordX, cordY, 1, 1).data;
+		//Get the Red, Green, Blue density of the pixel.
+		var color = new Color([pixelData[0], pixelData[1], pixelData[2]]);
+		//Convert to HEX-decimal and return
+		alert("PIXEL COLOR IS BEING CHECLED!");
+		return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
+	}
+}
+
 function findMove(res, e) {
 	if(res == 'down') {
 		document.getElementById("mySidenav").style.width = "0";
