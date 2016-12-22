@@ -130,20 +130,15 @@ function draw_ext(data, resolution){
 
 function getPixelColor(res, e) {
 	if(res == 'rightClick') {
-		alert("1");
 		e.preventDefault();
 		var cordX = e.clientX - rect.left;
 		var cordY = e.clientY - rect.top;
-		alert("2");
 		var pixelData = ctx.getImageData(cordX, cordY, 1, 1).data;
-		alert("3");
 		//Get the Red, Green, Blue density of the pixel.
 		var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
-		alert("4");
 		//var color = new Color([pixelData[0], pixelData[1], pixelData[2]]);
 		//Convert to HEX-decimal and return
-		alert("DONE");
-		document.getElementById('size').innerHTML = hex;
+		document.getElementById('color').innerHTML = hex;
 		//return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
 	}
 }
