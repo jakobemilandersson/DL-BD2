@@ -134,7 +134,8 @@ function getPixelColor(res, e) {
 	var cordY = e.clientY - rect.top;
 	var pixelData = ctx.getImageData(cordX, cordY, 1, 1).data;
 	//Get the Red, Green, Blue density of the pixel.
-	var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+	//****var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+	var hex = ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
 	//var color = new Color([pixelData[0], pixelData[1], pixelData[2]]);
 	//Convert to HEX-decimal and return
 	document.getElementById('color').value = hex;
