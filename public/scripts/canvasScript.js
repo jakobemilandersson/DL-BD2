@@ -9,6 +9,10 @@ var ctx = canvas.getContext("2d");
 var size = document.getElementById('size');
 var color = document.getElementById('color');
 
+var left, right;
+left = mie ? 1 : 0;
+right = 2;
+
 var old_w;
 var old_h;
 var old_dataURL;
@@ -129,18 +133,17 @@ function draw_ext(data, resolution){
 }
 
 function getPixelColor(res, e) {
-	if(res == 'rightClick') {
-		e.preventDefault();
-		var cordX = e.clientX - rect.left;
-		var cordY = e.clientY - rect.top;
-		var pixelData = ctx.getImageData(cordX, cordY, 1, 1).data;
-		//Get the Red, Green, Blue density of the pixel.
-		var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
-		//var color = new Color([pixelData[0], pixelData[1], pixelData[2]]);
-		//Convert to HEX-decimal and return
-		document.getElementById('color').value = hex;
-		//return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
-	}
+	e.preventDefault();
+	var cordX = e.clientX - rect.left;
+	var cordY = e.clientY - rect.top;
+	var pixelData = ctx.getImageData(cordX, cordY, 1, 1).data;
+	//Get the Red, Green, Blue density of the pixel.
+	var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+	//var color = new Color([pixelData[0], pixelData[1], pixelData[2]]);
+	//Convert to HEX-decimal and return
+	document.getElementById('color').value = hex;
+	//return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
+
 }
 
 function rgbToHex(r, g, b) {
@@ -151,28 +154,33 @@ function rgbToHex(r, g, b) {
 
 function findMove(res, e) {
 	if(res == 'down') {
-		document.getElementById("mySidenav").style.width = "0";
-		//Set old mouse coordinates to "new" previous coordinates
-		prevCordX = newCordX;
-		prevCordY = newCordY;
-		//Current relative mouse coordinates
-		newCordX = e.clientX - rect.left;
-		newCordY = e.clientY - rect.top;
+		if(e.button === right) {
+			getPixelColor(res, e);
+		}
+		else {
+			document.getElementById("mySidenav").style.width = "0";
+			//Set old mouse coordinates to "new" previous coordinates
+			prevCordX = newCordX;
+			prevCordY = newCordY;
+			//Current relative mouse coordinates
+			newCordX = e.clientX - rect.left;
+			newCordY = e.clientY - rect.top;
 
-		//Add brush color and size as first element in coordinates array.
-		coordinates.push(size.value, "#"+color.value);
-		frst_coord_tuple = [newCordX, newCordY];
-		coordinates.push(frst_coord_tuple);
-		flag = true;
-		dot_flag = true;
+			//Add brush color and size as first element in coordinates array.
+			coordinates.push(size.value, "#"+color.value);
+			frst_coord_tuple = [newCordX, newCordY];
+			coordinates.push(frst_coord_tuple);
+			flag = true;
+			dot_flag = true;
 
-		if(dot_flag) {
-			ctx.beginPath();
-			ctx.fillStyle = "black";
-			ctx.fillRect = (newCordX, newCordY, size.value, size.value);
-			ctx.closePath();
-			dot_flag = false;
-			coordinates.push([newCordX, newCordY]);
+			if(dot_flag) {
+				ctx.beginPath();
+				ctx.fillStyle = "black";
+				ctx.fillRect = (newCordX, newCordY, size.value, size.value);
+				ctx.closePath();
+				dot_flag = false;
+				coordinates.push([newCordX, newCordY]);
+			}
 		}
 	}
 
