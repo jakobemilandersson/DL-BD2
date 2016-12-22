@@ -9,10 +9,6 @@ var ctx = canvas.getContext("2d");
 var size = document.getElementById('size');
 var color = document.getElementById('color');
 
-var left, right;
-left = mie ? 1 : 0;
-right = 2;
-
 var old_w;
 var old_h;
 var old_dataURL;
@@ -154,7 +150,7 @@ function rgbToHex(r, g, b) {
 
 function findMove(res, e) {
 	if(res == 'down') {
-		if(e.button === right) {
+		if(e.button === 2 || e.button == 2) {
 			getPixelColor(res, e);
 		}
 		else {
