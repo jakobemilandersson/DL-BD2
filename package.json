@@ -25,6 +25,7 @@
     "express-session": "^1.14.2",
     "express-validator": "^3.0.0",
     "socket.io": "^1.7.1"
+	"mongodb": "^3.2.11"
   },
   "bugs": {
     "url": "https://github.com/adty3240/Drawline/issues"
