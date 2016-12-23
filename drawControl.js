@@ -4,20 +4,6 @@ var room_Control = require('./roomControl');
 
 var Canvas = require('canvas'), canvas = new Canvas(1,1), ctx = canvas.getContext('2d'), Image = Canvas.Image;
 
-//Get MongoDB.
-var mongodb = require('mongodb');
-//Get Drawline database.
-var uri = 'mongodb://heroku_kcplb6p5:helloQ07734@ds141328.mlab.com:41328/heroku_kcplb6p5'
-mongodb.MongoClient.connect(uri, function(eer, db) {
-	if(err) {
-		throw err;
-	}
-	
-	else {
-		console.log('wow it worked! :D');
-	}
-});
-
 draw_Control.getServerCanvas = function(){
 	return canvas.toDataURL();
 }
