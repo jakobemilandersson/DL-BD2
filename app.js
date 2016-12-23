@@ -11,13 +11,14 @@ var draw_Control = require('./drawControl');
 var user_Control = require('./userControl');
 var room_Control = require('./roomControl.js');
 //Database:
-var MongoClient = require('mongodb').MongoClient;
+var mongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://heroku_kcplb6p5:helloQ07734@ds141328.mlab.com:41328/heroku_kcplb6p5';
 
 //Try to connect to MongoDB Database
-MongoClient.connect(url, function(err, db) {
+mongoClient.connect(url, function(err, db) {
 	if(err) {
 		console.log(err);
+		return;
 	}
 	
 	else {
