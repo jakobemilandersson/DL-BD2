@@ -14,7 +14,7 @@ var mongodb = require('mongodb');
 
 //Database:
 var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://heroku_kcplb6p5:helloQ07734@ds141328.mlab.com:41328/heroku_kcplb6p5'
+var url = 'mongodb://heroku_kcplb6p5:helloQ07734@ds141328.mlab.com:41328/heroku_kcplb6p5';
 
 //Try to connect to MongoDB Database
 MongoClient.connect(url, function(err, db) {
