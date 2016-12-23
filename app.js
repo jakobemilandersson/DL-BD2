@@ -10,7 +10,25 @@ var bodyParser = require ('body-parser');
 var draw_Control = require('./drawControl');
 var user_Control = require('./userControl');
 var room_Control = require('./roomControl.js');
+var mongodb = require('mongodb');
 
+//Database:
+var MongoClient = mongodb.MongoClient;
+var url = 'mongodb://heroku_kcplb6p5:helloQ07734@ds141328.mlab.com:41328/heroku_kcplb6p5'
+
+//Try to connect to MongoDB Database
+MongoClient.connect(url, function(err, db) {
+	if(err) {
+		console.log(err);
+	}
+	
+	else {
+		console.log('IT WORKED!!!');
+	}
+	
+	//Uncomment when it's working
+	db.close();
+});
 //All routes moved to this module.
 //var routes = require('./routes')(app); will use this next push
 
