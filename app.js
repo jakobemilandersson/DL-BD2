@@ -17,7 +17,7 @@ var url = 'mongodb://heroku_kcplb6p5:helloQ07734@ds141328.mlab.com:41328/heroku_
 //Try to connect to MongoDB Database
 mongoClient.connect(url, function(err, db) {
 	if(err) {
-		console.log("IT DIDNT WORK MOFO!");
+		console.log(err);
 		return;
 	}
 	
