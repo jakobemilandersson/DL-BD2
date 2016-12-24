@@ -23,9 +23,7 @@ mongoClient.connect(url, function(err, db) {
 	
 	else {
 		console.log('IT WORKED!!!');
-		db.createCollection("test", function(err, collection){
-			collection.insert({"test":"value"});
-		});
+		db.createCollection('test', function(err, collection) {});
 	}
 	
 	//Uncomment when it's working
