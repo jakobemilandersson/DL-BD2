@@ -10,7 +10,7 @@ mongoClient.connect(url, function(err, db) {
 		console.log(err);
 		return;
 	}
-}
+});
 
 user_Control.userFunctions = function(data, socket, io){
 		switch(data.type){
