@@ -38,6 +38,8 @@ user_Control.userFunctions = function(data, socket, io){
 
 			case 'userDisconnect':
 				removeFromUserList(socket, io);
+				//remove all entries from socket from MongoDB
+				mongoDB.collection('User').remove({"socketID":socket.id});
 				break;
 			}
 }
