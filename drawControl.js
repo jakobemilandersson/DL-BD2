@@ -4,6 +4,19 @@ var room_Control = require('./roomControl');
 
 var Canvas = require('canvas'), canvas = new Canvas(1,1), ctx = canvas.getContext('2d'), Image = Canvas.Image;
 
+//Everything for MongoDB
+var url = 'mongodb://jaki:123@ds141368.mlab.com:41368/heroku_b774r87n';
+var mongoDB;
+
+//Connect to MongoDB
+mongoClient.connect(url, function(err, db) {
+	if(err) {
+		console.log(err);
+		return;
+	}
+	mongoDB = db;
+});
+
 draw_Control.getServerCanvas = function(){
 	return canvas.toDataURL();
 }
