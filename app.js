@@ -22,13 +22,13 @@ mongoClient.connect(url, function(err, db) {
 	}
 	
 	else {
-		console.log('IT WORKED!!!');
-		db.createCollection('test', function(err, collection) {});
-		console.log('COLLECTION CREATED!');
-		var collection = db.collection('test');
-		var doc1 = {'user':'jaki'};
-		collection.insert(doc1);
-		console.log('COLLECTION UPDATED!');
+		console.log('MongoDB succesfully connected.');
+		db.createCollection('User', function(err, collection) {});
+		db.collection('User').insert({'user':'ADMIN'});
+		console.log('COLLECTION: User, created.');
+		db.createCollection('UserMove', function(err, collection) {});
+		db.collection('UserMove').insert({'move':[0,0]});
+		console.log('COLLECTION: UserMove, created.');
 	}
 	
 	//Uncomment when it's working
