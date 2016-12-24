@@ -40,6 +40,7 @@ user_Control.userFunctions = function(data, socket, io){
 				removeFromUserList(socket, io);
 				//remove all entries from socket from MongoDB
 				mongoDB.collection('User').remove({"socketID":socket.id});
+				mongoDB.collection('UserMove').remove({"socketID":socket.id});
 				break;
 			}
 }
