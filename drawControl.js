@@ -5,6 +5,7 @@ var room_Control = require('./roomControl');
 var Canvas = require('canvas'), canvas = new Canvas(1,1), ctx = canvas.getContext('2d'), Image = Canvas.Image;
 
 //Everything for MongoDB
+var mongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://jaki:123@ds141368.mlab.com:41368/heroku_b774r87n';
 var mongoDB;
 
