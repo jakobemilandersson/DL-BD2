@@ -25,6 +25,10 @@ mongoClient.connect(url, function(err, db) {
 		console.log('IT WORKED!!!');
 		db.createCollection('test', function(err, collection) {});
 		console.log('COLLECTION CREATED!');
+		var collection = db.collection('test');
+		var doc1 = {'user':'jaki'};
+		collection.insert(doc1);
+		console.log('COLLECTION UPDATED!');
 	}
 	
 	//Uncomment when it's working
