@@ -46,6 +46,8 @@ draw_Control.drawFunctions = function(data, socket, io, rtt){
 				mongoDB.collection('UserMove').insert({'socketID':socket.id, "move":data.coord_data, "res":data.resolution});
 			//	io.to(socket.curr_room).emit('ext_coordinates', [data.coord_data, data.resolution]);
 		 	 	drawServerCanvas({type: 'coordData', cnv_data: data.coord_data, resolution: data.resolution}, socket);
+				//Save serverCanvas as URL in MongoDB
+				mongoDB.collection('User').update({'user':'ADMIN'}, {'socketID':roomCanvas.toDataURL()});
 		  }
 			break;
 
