@@ -24,10 +24,10 @@ mongoClient.connect(url, function(err, db) {
 	else {
 		console.log('MongoDB succesfully connected.');
 		db.createCollection('User', function(err, collection) {});
-		db.collection('User').insert({'user':'ADMIN'});
+		db.collection('User').insert({'user':'ADMIN', "moveID":0});
 		console.log('COLLECTION: User, created.');
 		db.createCollection('UserMove', function(err, collection) {});
-		db.collection('UserMove').insert({'move':[0,0]});
+		db.collection('UserMove').insert({'moveID':0, 'move':[0,0]});
 		console.log('COLLECTION: UserMove, created.');
 	}
 	
