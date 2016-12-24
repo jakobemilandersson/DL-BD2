@@ -24,6 +24,7 @@ mongoClient.connect(url, function(err, db) {
 	else {
 		console.log('IT WORKED!!!');
 		db.createCollection('test', function(err, collection) {});
+		console.log('COLLECTION CREATED!');
 	}
 	
 	//Uncomment when it's working
