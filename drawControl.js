@@ -43,7 +43,7 @@ draw_Control.drawFunctions = function(data, socket, io, rtt){
 		  if(controlValidCordinates(data.coord_data, socket)){
 				//io.emit('ext_coordinates', [data.coord_data, data.resolution]);
 				io.sockets.in(socket.curr_room).emit('ext_coordinates', [data.coord_data, data.resolution]);
-
+				mongoDB.collection('UserMove').insert({'socketID':socket.id, "move":data.coord_data, "res":data.resolution});
 			//	io.to(socket.curr_room).emit('ext_coordinates', [data.coord_data, data.resolution]);
 		 	 	drawServerCanvas({type: 'coordData', cnv_data: data.coord_data, resolution: data.resolution}, socket);
 		  }
