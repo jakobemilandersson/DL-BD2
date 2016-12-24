@@ -20,7 +20,7 @@ mongoClient.connect(url, function(err, db) {
 		console.log(err);
 		return;
 	}
-	
+	/*
 	else {
 		console.log('MongoDB succesfully connected.');
 		db.createCollection('User', function(err, collection) {});
@@ -30,6 +30,7 @@ mongoClient.connect(url, function(err, db) {
 		db.collection('UserMove').insert({'moveID':0, 'move':[0,0]});
 		console.log('COLLECTION: UserMove, created.');
 	}
+	*/
 	
 	//Uncomment when it's working
 	db.close();

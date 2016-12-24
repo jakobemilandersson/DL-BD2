@@ -1,11 +1,24 @@
 var user_Control = module.exports = {};
 var draw_Control = require('./drawControl');
 
+var mongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://jaki:123@ds141368.mlab.com:41368/heroku_b774r87n';
+
+//Connect to MongoDB
+mongoClient.connect(url, function(err, db) {
+	if(err) {
+		console.log(err);
+		return;
+	}
+}
+
 user_Control.userFunctions = function(data, socket, io){
 		switch(data.type){
 			case 'newUser':
 				//add user to list of users
 				addToUserList(data, socket);
+				//add userName to MongoDB
+				db.collection('User').insert({'user':data.username, 'moveID':1});
 				//add user vote list of users
 				initUserVote(socket);
 				//send new userList to all clients
