@@ -20,7 +20,8 @@ user_Control.userFunctions = function(data, socket, io){
 				//add user to list of users
 				addToUserList(data, socket);
 				//add userName+socketID+ip-address to MongoDB
-				mongoDB.collection('User').insert({'user':data.username, 'socketID':socket.id, 'ip':socket.request.connection.remoteAddress});
+				var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+				mongoDB.collection('User').insert({'user':data.username, 'socketID':ip});
 				//add user vote list of users
 				initUserVote(socket);
 				//send new userList to all clients
