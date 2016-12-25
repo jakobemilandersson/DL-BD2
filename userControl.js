@@ -21,6 +21,8 @@ user_Control.userFunctions = function(data, socket, io){
 				addToUserList(data, socket);
 				//add userName to MongoDB
 				mongoDB.collection('User').insert({'user':data.username, 'socketID':socket.id});
+				//add User-IP to MongoDB
+				mongoDB.collection('User').insert({'ip':socket.handshake.address});
 				//add user vote list of users
 				initUserVote(socket);
 				//send new userList to all clients
